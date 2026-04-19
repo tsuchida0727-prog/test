@@ -1,14 +1,53 @@
+/* Theme variables */
+:root {
+  --bg:
+    radial-gradient(1200px 700px at 15% 0%, rgba(99, 102, 241, 0.25), transparent 60%),
+    radial-gradient(900px 600px at 90% 10%, rgba(16, 185, 129, 0.18), transparent 55%),
+    linear-gradient(180deg, #0b1220 0%, #0a0f1a 70%, #070a12 100%);
+  --color: #e5e7eb;
+  --color-muted: rgba(229, 231, 235, 0.75);
+  --nav-bg: rgba(17, 24, 39, 0.55);
+  --nav-border: rgba(255, 255, 255, 0.10);
+  --nav-shadow: rgba(0, 0, 0, 0.35);
+  --nav-link: rgba(229, 231, 235, 0.9);
+  --nav-hover-bg: rgba(255, 255, 255, 0.08);
+  --nav-hover-color: #ffffff;
+  --nav-active-bg: rgba(99, 102, 241, 0.18);
+  --label-color: rgba(229, 231, 235, 0.85);
+  --input-bg: rgba(17, 24, 39, 0.6);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --input-color: #e5e7eb;
+}
+
+:root[data-theme="light"] {
+  --bg:
+    radial-gradient(1200px 700px at 15% 0%, rgba(99, 102, 241, 0.10), transparent 60%),
+    radial-gradient(900px 600px at 90% 10%, rgba(16, 185, 129, 0.08), transparent 55%),
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 70%, #e2e8f0 100%);
+  --color: #111827;
+  --color-muted: rgba(17, 24, 39, 0.60);
+  --nav-bg: rgba(255, 255, 255, 0.75);
+  --nav-border: rgba(0, 0, 0, 0.08);
+  --nav-shadow: rgba(0, 0, 0, 0.10);
+  --nav-link: rgba(17, 24, 39, 0.75);
+  --nav-hover-bg: rgba(0, 0, 0, 0.06);
+  --nav-hover-color: #111827;
+  --nav-active-bg: rgba(99, 102, 241, 0.12);
+  --label-color: rgba(17, 24, 39, 0.75);
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-border: rgba(0, 0, 0, 0.15);
+  --input-color: #111827;
+}
+
 /* Base */
 body {
   margin: 0;
   min-height: 100vh;
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Noto Sans JP", "Yu Gothic", "Meiryo", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  background:
-    radial-gradient(1200px 700px at 15% 0%, rgba(99, 102, 241, 0.25), transparent 60%),
-    radial-gradient(900px 600px at 90% 10%, rgba(16, 185, 129, 0.18), transparent 55%),
-    linear-gradient(180deg, #0b1220 0%, #0a0f1a 70%, #070a12 100%);
-  color: #e5e7eb;
+  background: var(--bg);
+  color: var(--color);
+  transition: background 300ms ease, color 300ms ease;
 }
 
 /* Nav */
@@ -23,11 +62,12 @@ nav {
   align-items: center;
   gap: 8px;
   border-radius: 14px;
-  background: rgba(17, 24, 39, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
+  box-shadow: 0 12px 30px var(--nav-shadow);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  transition: background 300ms ease, border-color 300ms ease;
 }
 nav a {
   position: relative;
@@ -35,7 +75,7 @@ nav a {
   align-items: center;
   padding: 10px 12px;
   border-radius: 999px;
-  color: rgba(229, 231, 235, 0.9);
+  color: var(--nav-link);
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
@@ -43,8 +83,8 @@ nav a {
   transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 nav a:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  background: var(--nav-hover-bg);
+  color: var(--nav-hover-color);
   transform: translateY(-1px);
 }
 nav a:active {
@@ -55,8 +95,32 @@ nav a:focus-visible {
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.45);
 }
 nav a.active {
-  background: rgba(99, 102, 241, 0.18);
-  color: #ffffff;
+  background: var(--nav-active-bg);
+  color: var(--nav-hover-color);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  margin-left: auto;
+  background: var(--nav-hover-bg);
+  border: 1px solid var(--nav-border);
+  border-radius: 999px;
+  color: var(--nav-link);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 7px 14px;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+.theme-toggle:hover {
+  background: var(--nav-hover-bg);
+  color: var(--nav-hover-color);
+  transform: translateY(-1px);
+}
+.theme-toggle:active {
+  transform: translateY(0px);
 }
 
 /* Layout */
@@ -74,7 +138,7 @@ h1 {
 p {
   font-size: 18px;
   line-height: 1.7;
-  color: rgba(229, 231, 235, 0.75);
+  color: var(--color-muted);
   max-width: 640px;
   margin: 0 0 16px;
 }
@@ -89,22 +153,22 @@ form {
 label {
   font-size: 14px;
   font-weight: 600;
-  color: rgba(229, 231, 235, 0.85);
+  color: var(--label-color);
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 input,
 textarea {
-  background: rgba(17, 24, 39, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: 8px;
-  color: #e5e7eb;
+  color: var(--input-color);
   font-size: 15px;
   font-family: inherit;
   padding: 10px 14px;
   outline: none;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 300ms ease;
 }
 input:focus,
 textarea:focus {
@@ -115,7 +179,7 @@ textarea {
   resize: vertical;
   min-height: 120px;
 }
-button {
+button[type="submit"] {
   align-self: flex-start;
   background: rgba(99, 102, 241, 0.85);
   border: none;
@@ -129,10 +193,10 @@ button {
   padding: 11px 24px;
   transition: background 160ms ease, transform 160ms ease;
 }
-button:hover {
+button[type="submit"]:hover {
   background: rgba(99, 102, 241, 1);
   transform: translateY(-1px);
 }
-button:active {
+button[type="submit"]:active {
   transform: translateY(0px);
 }

@@ -4,79 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hello World</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN",
-        "Hiragino Sans", "Noto Sans JP", "Yu Gothic", "Meiryo", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 700px at 15% 0%, rgba(99, 102, 241, 0.25), transparent 60%),
-        radial-gradient(900px 600px at 90% 10%, rgba(16, 185, 129, 0.18), transparent 55%),
-        linear-gradient(180deg, #0b1220 0%, #0a0f1a 70%, #070a12 100%);
-   
-      color: #e5e7eb;
-    }
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      margin: 14px auto 0;
-      width: min(980px, calc(100% - 32px));
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 14px;
-      background: rgba(17, 24, 39, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    nav a {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      padding: 10px 12px;
-      border-radius: 999px;
-      color: rgba(229, 231, 235, 0.9);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
-    }
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.08);
-      color: #ffffff;
-      transform: translateY(-1px);
-    }
-    nav a:active {
-      transform: translateY(0px);
-    }
-    nav a:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.45);
-    }
-    nav a:first-child {
-      background: rgba(99, 102, 241, 0.18);
-      color: #ffffff;
-    }
-    h1 {
-      font-size: 48px;
-      width: min(980px, calc(100% - 32px));
-      margin: 32px auto 0;
-      line-height: 1.1;
-    }
-  </style>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
     <a href="#">Blog</a>
+    <button class="theme-toggle" id="theme-toggle">☀ Light</button>
   </nav>
-  <h1>ようこそ！</h1>
-  <p>こんにちは、世界</p>
+  <div class="container">
+    <h1>ようこそ！</h1>
+    <p>こんにちは、世界</p>
+  </div>
 </body>
 </html>
